@@ -1,0 +1,39 @@
+// Create a variable to hold your NFTs
+let nfts = [];
+
+// Function to mint an NFT
+function mintNFT(name, creator, description) {
+    // Create an NFT object using the parameters passed
+    const nft = {
+        name: name,
+        creator: creator,
+        description: description,
+    };
+
+    // Add the NFT object to the array
+    nfts.push(nft);
+    console.log(`NFT Minted: ${name} by ${creator}`);
+}
+
+// Function to list all NFTs
+function listNFTs() {
+    console.log("Listing all NFTs:");
+    nfts.forEach((nft, index) => {
+        console.log(`NFT #${index + 1}`);
+        console.log(`  Name: ${nft.name}`);
+        console.log(`  Creator: ${nft.creator}`);
+        console.log(`  Description: ${nft.description}`);
+    });
+}
+
+// Function to get total number of NFTs minted
+function getTotalSupply() {
+    return nfts.length;
+}
+
+// Example usage
+mintNFT("C1", "Kai", "Art1");
+mintNFT("C2", "Conach", " Art2");
+
+listNFTs();
+console.log(`Total NFTs Minted: ${getTotalSupply()}`);
