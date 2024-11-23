@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract MyToken {
+
+    // Public variables 
+    string public tokenName = "MyToken";
+    string public tokenAbbrv = "MYT";
+    uint256 public totalSupply;
+
+    // Mapping variables
+    mapping(address => uint256) public balances;
+
+    // Mint function
+    function mint(address _to, uint256 _value) public {
+        require(_to != address(0), "Invalid address");
+        totalSupply += _value; // Increase supply
+        balances[_to] += _value; // Increase balance of recipient
+    }
+
+    // Burn function
+    function burn(address _from, uint256 _value) public {
+        require(_from != address(0), "Invalid address");
+        require(balances[_from] >= _value, "Insufficient balance");
+        totalSupply -= _value; // Decrease supply
+        balances[_from] -= _value; // Decrease balance of sender
+    }
+}
